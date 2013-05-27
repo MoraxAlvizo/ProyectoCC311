@@ -16,7 +16,7 @@ class Line:
         virtual ~Line();
 
         /** Metodos **/
-        void calcLine();
+        void calcule();
 
     private:
         int signo(int);

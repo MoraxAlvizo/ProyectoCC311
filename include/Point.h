@@ -25,6 +25,7 @@ class Point
         bool operator > (Point p2);
         void operator = (Point p2);
         bool operator == (Point p2);
+        void operator + (Point p2);
         void drawPoint();
 
         GLint x;

@@ -1,6 +1,7 @@
 #ifndef DRAWINGOPENGL_H
 #define DRAWINGOPENGL_H
 
+#include <iostream>
 #include <gtkmm.h>
 #include <gtkglmm.h>
 #include <GL/gl.h>
@@ -12,8 +13,7 @@
 #include "Circle.h"
 #include "Ellipse.h"
 #include "Polygon.h"
-
-// Simple OpenGL scene.
+#include "Transformed.h"
 
 enum{
     R,
@@ -31,7 +31,9 @@ class DrawingOpenGL :
         bool primerPintado;
         int drawing;
         ToolsMenu* menu;
+        Transformed* transform;
         std::vector<Figure*> figuras;
+        std::vector<Polygon*> polygons;
 
 
     protected:

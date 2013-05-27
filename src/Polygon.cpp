@@ -12,7 +12,7 @@ Polygon::~Polygon()
     //dtor
 }
 
-void Polygon::calcPolygon(){
+void Polygon::calcule(){
 
 
     GLint  ang = 360/ faces, l;
@@ -42,15 +42,18 @@ void Polygon::polar(GLint x, GLint y,GLint r,GLfloat a, GLint pos){
 
 void Polygon::draw(){
 
-    glBegin(GL_LINES);
-    for(int i = 1; i<faces ; i++){
+    if(vertex.size() != 0){
+        glBegin(GL_LINES);
+        for(int i = 1; i<faces ; i++){
 
-        glVertex2i(vertex[i-1].getX(), vertex[i-1].getY());
-        glVertex2i(vertex[i].getX(), vertex[i].getY());
+            glVertex2i(vertex[i-1].getX(), vertex[i-1].getY());
+            glVertex2i(vertex[i].getX(), vertex[i].getY());
 
+        }
+        glVertex2i(vertex[faces-1].getX(), vertex[faces-1].getY());
+        glVertex2i(vertex[0].getX(), vertex[0].getY());
+        glEnd();
     }
-    glVertex2i(vertex[faces-1].getX(), vertex[faces-1].getY());
-    glVertex2i(vertex[0].getX(), vertex[0].getY());
-    glEnd();
+
 
 }

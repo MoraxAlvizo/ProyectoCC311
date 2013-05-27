@@ -11,12 +11,18 @@ class Figure
         Figure(GLint x, GLint y);
         virtual ~Figure();
         void setFinalPoint(Point final);
+        void setInicialPoint(Point inicial);
+        Point getFinalPoint();
+        Point getInicialPoint();
+
         void draw();
+        std::vector<Point> getPoints();
+        void setPoints(std::vector<Point>);
     protected:
         Point   inicial;
         Point   final;
         std::vector<Point> points;
-    private:
+
 };
 
 #endif // FIGURE_H

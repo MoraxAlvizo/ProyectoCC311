@@ -4,6 +4,7 @@
 #include <cmath>
 #include <vector>
 #include "Figure.h"
+#include "Line.h"
 
 class Polygon:
     public Figure
@@ -11,7 +12,7 @@ class Polygon:
     public:
         Polygon(GLint, GLint, GLshort);
         virtual ~Polygon();
-        void calcPolygon();
+        void calcule();
         void draw();
     protected:
         GLshort faces;

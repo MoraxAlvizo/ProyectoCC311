@@ -22,7 +22,7 @@ int Line::signo(int num)
 }
 
 
- void Line::calcLine(){
+ void Line::calcule(){
 
     GLint dx,dy,p;
     GLfloat m;

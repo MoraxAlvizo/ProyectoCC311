@@ -72,3 +72,8 @@ bool Point::operator == (Point p2){
         return true;
     return false;
 }
+
+void Point::operator + (Point p2){
+    this->x += p2.x;
+    this->y += p2.y;
+}

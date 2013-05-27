@@ -10,7 +10,7 @@ class Circle:
         Circle(GLint, GLint);
         virtual ~Circle();
         /** Metodos **/
-        void calcCircle();
+        void calcule();
     private:
         void applySymmetry(GLint x, GLint y);
 };

@@ -12,9 +12,8 @@ Ellipse::~Ellipse()
 }
 
 
- void Ellipse::calcEllipse(){
+ void Ellipse::calcule(){
 
-    //drawEllipse(this->x, this->y, abs(this->x - event->x),abs(this->y  - auxy));
     GLint rx = std::abs(inicial.getX() - final.getX());
     GLint ry = std::abs(inicial.getY() - final.getY());
 	long p, px, py, x, y, ry2, rx2, tworx2, twory2;

@@ -11,7 +11,7 @@ Circle::~Circle()
     //dtor
 }
 
-void Circle::calcCircle(){
+void Circle::calcule(){
     int x,y,p;
 
     points.clear();
