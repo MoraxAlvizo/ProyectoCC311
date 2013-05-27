@@ -35,6 +35,8 @@ class DrawingOpenGL :
         std::vector<Figure*> figuras;
         std::vector<Polygon*> polygons;
 
+        Figure* getLastFigura();
+
 
     protected:
         //atributos
@@ -47,6 +49,7 @@ class DrawingOpenGL :
         virtual bool on_button_release_event(GdkEventButton* event);
         virtual bool on_configure_event (GdkEventConfigure*event);
         virtual bool on_enter_notify_event (GdkEventCrossing*event);
+        void drawOrigin();
         void crearBufferPixeles();
 
 

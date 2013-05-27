@@ -12,10 +12,11 @@ Ellipse::~Ellipse()
 }
 
 
- void Ellipse::calcule(){
+ void Ellipse::calcule(bool draw){
 
     GLint rx = std::abs(inicial.getX() - final.getX());
     GLint ry = std::abs(inicial.getY() - final.getY());
+    int contador = 0;
 	long p, px, py, x, y, ry2, rx2, tworx2, twory2;
 
 	points.clear();
@@ -28,8 +29,8 @@ Ellipse::~Ellipse()
 	//region1
 	x = 0;
 	y = ry;
-	applySymmetry(x,y);
 	p = ceil(ry2 - rx2 * ry + (0.25 * rx2));
+	applySymmetry(x,y,draw,contador,p, tworx2, twory2);
 	px = 0;
 	py = tworx2 * y;
 	while(px < py)
@@ -45,7 +46,8 @@ Ellipse::~Ellipse()
 			p+= ry2 + px;
 		else
 			p+= ry2 + px - py;
-		applySymmetry(x,y);
+        contador++;
+		applySymmetry(x,y,draw,contador,p, tworx2, twory2);
 
 	}
 	//region 2
@@ -64,17 +66,33 @@ Ellipse::~Ellipse()
 			p += rx2 -py;
 		else
 			p += rx2 -py + px;
-		applySymmetry(x,y);
+        contador++;
+		applySymmetry(x,y,draw,contador, p, tworx2, twory2);
 	}
 }
 
-void Ellipse::applySymmetry(GLint x, GLint y){
+void Ellipse::applySymmetry(GLint x, GLint y, bool draw,GLint contador, GLint p, GLint _2rx2, GLint _2ry2){
 
+    char cont[200];
 
-    points.push_back(Point(inicial.getX() + x, inicial.getY() + y));
-    points.push_back(Point(inicial.getX() - x, inicial.getY() + y));
-    points.push_back(Point(inicial.getX() + x, inicial.getY() - y));
-    points.push_back(Point(inicial.getX() - x, inicial.getY() - y));
+    if(draw){
+        points.push_back(Point(inicial.getX() + x, inicial.getY() + y));
+        points.push_back(Point(inicial.getX() - x, inicial.getY() + y));
+        points.push_back(Point(inicial.getX() + x, inicial.getY() - y));
+        points.push_back(Point(inicial.getX() - x, inicial.getY() - y));
+    }
+    else{
+        sprintf(cont,"%d\t%d\t\t[ %d , %d ][ %d , %d ][ %d , %d ][ %d , %d ]\t%d\t%d\n",contador,p,
+                               inicial.getX() + x, inicial.getY() + y,
+                               inicial.getX() - x, inicial.getY() + y,
+                               inicial.getX() + x, inicial.getY() - y,
+                               inicial.getX() - x, inicial.getY() - y,
+                               _2ry2 * x,
+                               _2rx2 * y
+
+                );
+        buffer->set_text(buffer->get_text().append(cont));
+    }
 
 }
 

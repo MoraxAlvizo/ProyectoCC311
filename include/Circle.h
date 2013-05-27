@@ -10,9 +10,11 @@ class Circle:
         Circle(GLint, GLint);
         virtual ~Circle();
         /** Metodos **/
-        void calcule();
+        void calcule(bool);
     private:
-        void applySymmetry(GLint x, GLint y);
+        void applySymmetry(GLint x, GLint y, bool, GLint, GLint);
+        GLint _2x;
+        GLint _2y;
 };
 
 #endif // CIRCLE_H

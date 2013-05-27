@@ -22,7 +22,7 @@ int Line::signo(int num)
 }
 
 
- void Line::calcule(){
+ void Line::calcule(bool draw){
 
     GLint dx,dy,p;
     GLfloat m;
@@ -30,6 +30,11 @@ int Line::signo(int num)
     int x, y;
     Point i = inicial, f = final;
     points.clear();
+    Glib::ustring text;
+    int contador = 0;
+    char cont[50];
+    buffer->set_text("");
+
 
 
     if(i.getX() > f.getX()){
@@ -82,6 +87,11 @@ int Line::signo(int num)
                         p = p + 2 *(dy - dx);
                     }
                     points.push_back(Point(x, y));
+                    if(!draw){
+                        sprintf(cont,"%d\t%d\t\t[ %d , %d ] \n",contador, p, x,y);
+                        buffer->set_text(buffer->get_text().append(cont));
+                        contador++;
+                    }
                 }
             }
             else{
@@ -103,6 +113,11 @@ int Line::signo(int num)
                         p = p + 2 *(dx - dy);
                     }
                     points.push_back(Point(x, y));
+                    if(!draw){
+                        sprintf(cont,"%d\t%d\t\t[ %d , %d ] \n",contador, p, x,y);
+                        buffer->set_text(buffer->get_text().append(cont));
+                        contador++;
+                    }
 
                 }
             }
@@ -129,6 +144,11 @@ int Line::signo(int num)
                         p = p + 2 *(dy - dx);
                     }
                     points.push_back(Point(x, y));
+                    if(!draw){
+                        sprintf(cont,"%d\t%d\t\t[ %d , %d ] \n",contador, p, x,y);
+                        buffer->set_text(buffer->get_text().append(cont));
+                        contador++;
+                    }
 
                 }
             }
@@ -151,6 +171,11 @@ int Line::signo(int num)
                         p = p + 2 *(dx - dy);
                     }
                     points.push_back(Point(x, y));
+                    if(!draw){
+                        sprintf(cont,"%d\t%d\t\t[ %d , %d ] \n",contador, p, x,y);
+                        buffer->set_text(buffer->get_text().append(cont));
+                        contador++;
+                    }
 
                 }
             }

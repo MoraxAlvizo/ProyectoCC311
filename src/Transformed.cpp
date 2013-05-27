@@ -46,8 +46,8 @@ void Transformed::rotate(Figure* figure){
 
 void Transformed::scale(Figure* figure){
 
-    GLint sx = final.getX() - inicial.getX();
-    GLint sy = final.getY() - inicial.getY();
+    GLint sx = (final.getX() - inicial.getX())/10;
+    GLint sy = (final.getY() - inicial.getY())/10;
 
     GLint mat[3][3] = {
         { sx , 0  , inicial.getX()*(1 - sx)},

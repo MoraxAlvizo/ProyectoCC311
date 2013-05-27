@@ -10,10 +10,10 @@ class Ellipse:
     public:
         Ellipse(GLint, GLint);
         virtual ~Ellipse();
-        void calcule();
+        void calcule(bool);
     protected:
     private:
-        void applySymmetry(GLint x, GLint y);
+        void applySymmetry(GLint x, GLint y, bool, GLint, GLint, GLint, GLint);
 };
 
 #endif // ELLIPSE_H

@@ -1,10 +1,7 @@
 #include "../include/ToolsMenu.h"
 
 ToolsMenu::ToolsMenu(bool flag):
-    HBox(flag, 12),
-    bRotate("Rotar"),
-    bMove("Mover"),
-    bScale("Escalar")
+    HBox(flag, 12)
 {
     /** Inserción de iconos**/
 
@@ -46,6 +43,21 @@ ToolsMenu::ToolsMenu(bool flag):
 
     bHeptagono.set_image_position(Gtk::POS_LEFT);
     bHeptagono.set_image(*m_image);
+
+    m_image=new Gtk::Image("icons/rotate.png");
+
+    bRotate.set_image_position(Gtk::POS_LEFT);
+    bRotate.set_image(*m_image);
+
+    m_image=new Gtk::Image("icons/move.png");
+
+    bMove.set_image_position(Gtk::POS_LEFT);
+    bMove.set_image(*m_image);
+
+    m_image=new Gtk::Image("icons/scale.png");
+
+    bScale.set_image_position(Gtk::POS_LEFT);
+    bScale.set_image(*m_image);
 
     bLine.signal_clicked().connect(sigc::mem_fun(*this, &ToolsMenu::onButtonLine));
     bCircle.signal_clicked().connect(sigc::mem_fun(*this, &ToolsMenu::onButtonCircle));

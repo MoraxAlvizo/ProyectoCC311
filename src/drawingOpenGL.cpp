@@ -54,7 +54,7 @@ bool DrawingOpenGL::on_configure_event(GdkEventConfigure*event){
 
 	glMatrixMode(GL_PROJECTION);
 
-	gluOrtho2D(0.0, w, 0.0, h);
+	gluOrtho2D(-(w/2), w/2, -(h/2), h/2);
     glFlush();
 	gldrawable->gl_end();
 
@@ -68,7 +68,6 @@ bool DrawingOpenGL::on_expose_event(GdkEventExpose* event)
 {
     Glib::RefPtr<Gdk::GL::Context>  context;
 	Glib::RefPtr<Gdk::GL::Drawable> gldrawable;
-	gint w = get_width(), h = get_height();
 
 	context = get_gl_context();
 	gldrawable = get_gl_drawable();
@@ -76,15 +75,11 @@ bool DrawingOpenGL::on_expose_event(GdkEventExpose* event)
 	if (!gldrawable->gl_begin(context)){
 		g_assert_not_reached ();
 	}
-	if(primerPintado){
-		glClear(GL_COLOR_BUFFER_BIT);
-		primerPintado = false;
-		crearBufferPixeles();
-		glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, lienzo);
 
-	}else{
-		glDrawPixels(w, h, GL_RGB, GL_UNSIGNED_BYTE, lienzo);
-	}
+    glClear(GL_COLOR_BUFFER_BIT);
+    drawOrigin();
+    primerPintado = false;
+
 
     glFlush();
 	gldrawable -> gl_end();
@@ -96,7 +91,7 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
 
     Glib::RefPtr<Gdk::GL::Context>  context;
 	Glib::RefPtr<Gdk::GL::Drawable> gldrawable;
-    GLint  h = get_height();
+    GLint  w = get_width(),h = get_height();
 
     context = get_gl_context();
 	gldrawable = get_gl_drawable();
@@ -104,6 +99,8 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
 
 
     glClear(GL_COLOR_BUFFER_BIT);
+    drawOrigin();
+    glColor3f(0.0,0.0,0.0);
     for(unsigned int i = 0; i < figuras.size(); i++)
         figuras[i]->draw();
     for(unsigned int i = 0; i < polygons.size(); i++)
@@ -115,28 +112,28 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
     if(menu->action == DRAW){
         switch(menu->figura){
             case LINE:
-                figuras.push_back(new Line(event->x,  h - event->y ));
+                figuras.push_back(new Line(event->x - (w/2),  (h/2) - event->y ));
                 break;
             case CIRCLE:
-                figuras.push_back(new Circle(event->x,  h - event->y ));
+                figuras.push_back(new Circle(event->x - (w/2),  (h/2) - event->y  ));
                 break;
             case ELIPSE:
-                figuras.push_back(new Ellipse(event->x,  h - event->y ));
+                figuras.push_back(new Ellipse(event->x - (w/2),  (h/2) - event->y ));
                 break;
             case TRIANGULE:
-                polygons.push_back(new Polygon(event->x,  h - event->y ,TRIANGULE));
+                polygons.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y  ,TRIANGULE));
                 break;
             case RECTANGULE:
-                polygons.push_back(new Polygon(event->x,  h - event->y ,RECTANGULE));
+                polygons.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y  ,RECTANGULE));
                 break;
             case PENTAGONO:
-                polygons.push_back(new Polygon(event->x,  h - event->y ,PENTAGONO));
+                polygons.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y  ,PENTAGONO));
                 break;
             case HEXAGONO:
-                polygons.push_back(new Polygon(event->x,  h - event->y ,HEXAGONO));
+                polygons.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y ,HEXAGONO));
                 break;
             case HEPTAGONO:
-                polygons.push_back(new Polygon(event->x,  h - event->y ,HEPTAGONO));
+                polygons.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y ,HEPTAGONO));
                 break;
         }
 
@@ -149,7 +146,7 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
                 case CIRCLE:
                 case ELIPSE:
                     if(!figuras.empty())
-                        transform = new Transformed(event->x,  h - event->y ,figuras.back()->getInicialPoint(), figuras.back()->getFinalPoint());
+                        transform = new Transformed(event->x - (w/2),  (h/2) - event->y  ,figuras.back()->getInicialPoint(), figuras.back()->getFinalPoint());
                     break;
                 case TRIANGULE:
                 case RECTANGULE:
@@ -157,7 +154,7 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
                 case HEXAGONO:
                 case HEPTAGONO:
                     if(!polygons.empty())
-                        transform = new Transformed(event->x,  h - event->y ,polygons.back()->getInicialPoint(), polygons.back()->getFinalPoint());
+                        transform = new Transformed(event->x - (w/2),  (h/2) - event->y  ,polygons.back()->getInicialPoint(), polygons.back()->getFinalPoint());
                     break;
             }
           }
@@ -171,7 +168,7 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
 
     Glib::RefPtr<Gdk::GL::Context>  context;
 	Glib::RefPtr<Gdk::GL::Drawable> gldrawable;
-    GLint h = get_height();
+    GLint w = get_width(),h = get_height();
 
     context = get_gl_context();
 	gldrawable = get_gl_drawable();
@@ -179,6 +176,8 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
     //Eventos del mouse
 
     glClear(GL_COLOR_BUFFER_BIT);
+    drawOrigin();
+    glColor3f(0.0,0.0,0.0);
     for(unsigned int i = 0; i < figuras.size(); i++)
         figuras[i]->draw();
     for(unsigned int i = 0; i < polygons.size(); i++)
@@ -193,18 +192,22 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
 
                 switch(menu->action){
                     case MOVE:
-                        transform->setFinalPoint(Point(event->x, h - event->y));
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y ));
                         transform->move(linea);
                         break;
                     case ROTATE:
-                        transform->setFinalPoint(Point(event->x, h - event->y));
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y ));
                         transform->rotate(linea);
                         break;
+                    case SCALE:
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y ));
+                        transform->scale(linea);
+                        break;
                     case DRAW:
-                        linea->setFinalPoint(Point(event->x, h - event->y ));
+                        linea->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
                         break;
                 }
-                linea->calcule();
+                linea->calcule(true);
                 linea->draw();
                 break;
 
@@ -216,19 +219,23 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
 
                 switch(menu->action){
                     case MOVE:
-                        transform->setFinalPoint(Point(event->x, h - event->y));
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
                         transform->move(circle);
                         break;
                     case ROTATE:
-                        transform->setFinalPoint(Point(event->x, h - event->y));
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
                         transform->rotate(circle);
                         break;
+                    case SCALE:
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
+                        transform->scale(circle);
+                        break;
                     case DRAW:
-                        circle->setFinalPoint(Point(event->x, h - event->y ));
+                        circle->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y ));
                         break;
                 }
 
-                circle->calcule();
+                circle->calcule(true);
                 circle->draw();
                 break;
 
@@ -239,18 +246,18 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
 
                 switch(menu->action){
                     case MOVE:
-                        transform->setFinalPoint(Point(event->x, h - event->y));
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
                         transform->move(elipse);
                         break;
                     case ROTATE:
-                        transform->setFinalPoint(Point(event->x, h - event->y));
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
                         transform->rotate(elipse);
                         break;
                     case DRAW:
-                        elipse->setFinalPoint(Point(event->x, h - event->y ));
+                        elipse->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y ));
                         break;
                 }
-                elipse->calcule();
+                elipse->calcule(true);
                 elipse->draw();
                 break;
 
@@ -265,19 +272,19 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
 
                 switch(menu->action){
                     case MOVE:
-                        transform->setFinalPoint(Point(event->x, h - event->y));
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
                         transform->move(polygon);
                         break;
                     case ROTATE:
-                        transform->setFinalPoint(Point(event->x, h - event->y));
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
                         transform->rotate(polygon);
                         break;
                     case SCALE:
-                        transform->setFinalPoint(Point(event->x, h - event->y));
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
                         transform->scale(polygon);
                         break;
                     case DRAW:
-                        polygon->setFinalPoint(Point(event->x, h - event->y ));
+                        polygon->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y ));
                         break;
                 }
                 polygon->calcule();
@@ -306,6 +313,8 @@ bool DrawingOpenGL::on_button_release_event(GdkEventButton* event){
 	gldrawable->gl_begin(context);
 
     glClear(GL_COLOR_BUFFER_BIT);
+    drawOrigin();
+    glColor3f(0.0,0.0,0.0);
     for(unsigned int i = 0; i < figuras.size(); i++)
         figuras[i]->draw();
     for(unsigned int i = 0; i < polygons.size(); i++)
@@ -327,3 +336,27 @@ void DrawingOpenGL::crearBufferPixeles(){
     GLint w = get_width(), h = get_height();
     lienzo = new GLint [w*h];
 }
+
+void DrawingOpenGL::drawOrigin(){
+
+    GLint w = get_width(), h = get_height();
+
+    glBegin(GL_LINES);
+
+        glColor3f(1.0,0.0,0.0);
+        glVertex2i(w/2 , 0  );
+        glVertex2i(-w/2, 0  );
+
+        glColor3f(0.0,1.0,0.0);
+        glVertex2i( 0  ,h/2 );
+        glVertex2i( 0  ,-h/2);
+    glEnd();
+
+}
+
+Figure* DrawingOpenGL::getLastFigura(){
+    if(!figuras.empty())
+        return figuras.back();
+    return NULL;
+}
+

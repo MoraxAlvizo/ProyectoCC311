@@ -15,11 +15,20 @@ class App : public Gtk::Window
         App();
         virtual ~App();
 
+
+
     protected:
         // member widgets:
         DrawingOpenGL GL;
         Gtk::VBox box;
         ToolsMenu toolsMenu;
+        //Signal handlers:
+        void on_button_quit();
+        void on_switch_page (GtkNotebookPage* page, guint page_num);
+
+        Gtk::Notebook pestana;
+        Gtk::ScrolledWindow sWindow;
+        Gtk::TextView textView;
 
 };
 

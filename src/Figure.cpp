@@ -4,6 +4,7 @@ Figure::Figure(GLint x, GLint y)
 {
     //ctor
     this->inicial = Point(x,y);
+    buffer = Gtk::TextBuffer::create();
 }
 
 Figure::~Figure()
@@ -44,4 +45,8 @@ std::vector<Point> Figure::getPoints(){
 
 void Figure::setPoints(std::vector<Point> points){
     this->points = points;
+}
+
+Glib::RefPtr<Gtk::TextBuffer> Figure::getBuffer(){
+    return buffer;
 }

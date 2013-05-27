@@ -2,8 +2,9 @@
 #define FIGURE_H
 
 #include <vector>
+#include <sstream>
 #include "Point.h"
-
+#include <gtkmm.h>
 
 class Figure
 {
@@ -14,6 +15,7 @@ class Figure
         void setInicialPoint(Point inicial);
         Point getFinalPoint();
         Point getInicialPoint();
+        Glib::RefPtr<Gtk::TextBuffer> getBuffer();
 
         void draw();
         std::vector<Point> getPoints();
@@ -22,6 +24,7 @@ class Figure
         Point   inicial;
         Point   final;
         std::vector<Point> points;
+        Glib::RefPtr<Gtk::TextBuffer> buffer;
 
 };
 
