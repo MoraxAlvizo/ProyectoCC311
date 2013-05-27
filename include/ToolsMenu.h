@@ -33,6 +33,10 @@ class ToolsMenu:
         GLfloat color[3];
         GLfloat* getColor ();
 
+        void addMirrowsButtons(Gtk::RadioButton *, Gtk::RadioButton *,
+                               Gtk::RadioButton *, Gtk::RadioButton *,
+                               Gtk::RadioButton *, Gtk::RadioButton *);
+
     protected:
 
         /** Botones **/

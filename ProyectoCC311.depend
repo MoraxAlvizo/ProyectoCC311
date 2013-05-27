@@ -5648,13 +5648,13 @@
 	<gtkmm/drawingarea.h>
 	<gtkmm/gl/widget.h>
 
-1369667627 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/ToolsMenu.h
+1369693457 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/ToolsMenu.h
 	<gtkmm.h>
 	<gtkglmm.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
-1369684902 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/drawingOpenGL.h
+1369694187 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/drawingOpenGL.h
 	<iostream>
 	<gtkmm.h>
 	<gtkglmm.h>
@@ -5681,7 +5681,7 @@
 	<GL/gl.h>
 	<GL/glu.h>
 
-1369681372 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/App.h
+1369694716 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/App.h
 	<gtkmm.h>
 	<gtkglmm.h>
 	<GL/gl.h>
@@ -5689,7 +5689,7 @@
 	"ToolsMenu.h"
 	"drawingOpenGL.h"
 
-1369686792 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/App.cpp
+1369695230 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/App.cpp
 	"../include/App.h"
 
 1369491666 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/BMP.cpp
@@ -5710,10 +5710,10 @@
 	"../include/Point.h"
 	<iostream>
 
-1369668716 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/ToolsMenu.cpp
+1369693616 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/ToolsMenu.cpp
 	"../include/ToolsMenu.h"
 
-1369686760 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/drawingOpenGL.cpp
+1369695111 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/drawingOpenGL.cpp
 	"../include/drawingOpenGL.h"
 
 1369682379 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Figure.cpp
@@ -5732,7 +5732,7 @@
 	"Figure.h"
 	<cmath>
 
-1369686744 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Ellipse.cpp
+1369687101 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Ellipse.cpp
 	"../include/Ellipse.h"
 
 1369686867 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Ellipse.h
@@ -5748,11 +5748,11 @@
 	"Figure.h"
 	"Line.h"
 
-1369678255 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Transformed.cpp
+1369695335 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Transformed.cpp
 	"../include/Transformed.h"
 	<iostream>
 
-1369667369 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Transformed.h
+1369693878 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Transformed.h
 	<cmath>
 	"Figure.h"
 

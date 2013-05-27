@@ -153,3 +153,19 @@ void ToolsMenu::onButtonScale ()
 {
     action = SCALE;
 }
+
+void ToolsMenu::addMirrowsButtons(Gtk::RadioButton* bMirrowButton1, Gtk::RadioButton* bMirrowButton2,
+                                  Gtk::RadioButton* bMirrowButton3, Gtk::RadioButton* bMirrowButton4,
+                                  Gtk::RadioButton* bMirrowButton5, Gtk::RadioButton* bMirrowButton6){
+        m_image=new Gtk::Image("icons/mirror.png");
+
+        pack_start(*m_image);
+        pack_start(*bMirrowButton1);
+        pack_start(*bMirrowButton2);
+        pack_start(*bMirrowButton3);
+        pack_start(*bMirrowButton4);
+        pack_start(*bMirrowButton5);
+        pack_start(*bMirrowButton6);
+
+
+}

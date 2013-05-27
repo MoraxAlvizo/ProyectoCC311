@@ -78,9 +78,11 @@ bool DrawingOpenGL::on_expose_event(GdkEventExpose* event)
 
     glClear(GL_COLOR_BUFFER_BIT);
     drawOrigin();
-    primerPintado = false;
-
-
+    glColor3f(0.0,0.0,0.0);
+    for(unsigned int i = 0; i < figuras.size(); i++)
+        figuras[i]->draw();
+    for(unsigned int i = 0; i < polygons.size(); i++)
+        polygons[i]->draw();
     glFlush();
 	gldrawable -> gl_end();
 	return true;
@@ -358,5 +360,52 @@ Figure* DrawingOpenGL::getLastFigura(){
     if(!figuras.empty())
         return figuras.back();
     return NULL;
+}
+
+void DrawingOpenGL::mirrior(int numMirror){
+
+    Glib::RefPtr<Gdk::GL::Context>  context;
+	Glib::RefPtr<Gdk::GL::Drawable> gldrawable;
+
+    context = get_gl_context();
+	gldrawable = get_gl_drawable();
+	gldrawable->gl_begin(context);
+
+	glClear(GL_COLOR_BUFFER_BIT);
+    drawOrigin();
+    glColor3f(0.0,0.0,0.0);
+
+	transform = new Transformed(0, 0,polygons.back()->getInicialPoint(), polygons.back()->getFinalPoint());
+
+    switch(numMirror){
+
+        case 1:
+        transform->mirror1(polygons.back());
+        break;
+        case 2:
+        transform->mirror2(polygons.back());
+        break;
+        case 3:
+        transform->mirror3(polygons.back());
+        break;
+        case 4:
+        transform->mirror4(polygons.back());
+        break;
+        case 5:
+        transform->mirror5(polygons.back());
+        break;
+        case 6:
+        transform->mirror6(polygons.back());
+        break;
+
+    }
+    polygons.back()->calcule();
+    for(unsigned int i = 0; i < figuras.size(); i++)
+        figuras[i]->draw();
+    for(unsigned int i = 0; i < polygons.size(); i++)
+        polygons[i]->draw();
+
+    glFlush();
+    gldrawable -> gl_end();
 }
 

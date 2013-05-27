@@ -36,6 +36,7 @@ class DrawingOpenGL :
         std::vector<Polygon*> polygons;
 
         Figure* getLastFigura();
+        void mirrior(int );
 
 
     protected:

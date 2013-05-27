@@ -90,6 +90,145 @@ void Transformed::move(Figure* figure){
                             );
 }
 
+void Transformed::mirror1(Figure* figure){
+
+    GLint mat[3][3] = {
+        { 1  , 0  , 0},
+        { 0  , -1 , 0},
+        { 0  , 0  , 1},
+    };
+    std::cout << "Entro mirror 1" << std::endl;
+
+    figure->setInicialPoint(
+                            Point(
+                                  (mat[0][X] * figureInicial.getX() + mat[0][Y] * figureInicial.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureInicial.getX() + mat[1][Y] * figureInicial.getY() + mat[1][2] * 1)
+                                  )
+                            );
+    figure->setFinalPoint(
+                            Point(
+                                  (mat[0][X] * figureFinal.getX() + mat[0][Y] * figureFinal.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureFinal.getX() + mat[1][Y] * figureFinal.getY() + mat[1][2] * 1)
+                                  )
+                            );
+
+}
+
+void Transformed::mirror2(Figure* figure){
+
+    GLint mat[3][3] = {
+        {-1  , 0  , 0},
+        { 0  , 1  , 0},
+        { 0  , 0  , 1},
+    };
+
+    figure->setInicialPoint(
+                            Point(
+                                  (mat[0][X] * figureInicial.getX() + mat[0][Y] * figureInicial.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureInicial.getX() + mat[1][Y] * figureInicial.getY() + mat[1][2] * 1)
+                                  )
+                            );
+    figure->setFinalPoint(
+                            Point(
+                                  (mat[0][X] * figureFinal.getX() + mat[0][Y] * figureFinal.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureFinal.getX() + mat[1][Y] * figureFinal.getY() + mat[1][2] * 1)
+                                  )
+                            );
+
+}
+
+void Transformed::mirror3(Figure* figure){
+
+    GLint mat[3][3] = {
+        {-1  , 0  , 0},
+        { 0  , -1 , 0},
+        { 0  , 0  , 1},
+    };
+
+    figure->setInicialPoint(
+                            Point(
+                                  (mat[0][X] * figureInicial.getX() + mat[0][Y] * figureInicial.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureInicial.getX() + mat[1][Y] * figureInicial.getY() + mat[1][2] * 1)
+                                  )
+                            );
+    figure->setFinalPoint(
+                            Point(
+                                  (mat[0][X] * figureFinal.getX() + mat[0][Y] * figureFinal.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureFinal.getX() + mat[1][Y] * figureFinal.getY() + mat[1][2] * 1)
+                                  )
+                            );
+
+}
+
+void Transformed::mirror4(Figure* figure){
+
+    GLint mat[3][3] = {
+        {-1  , 0  , 0},
+        { 0  , -1 , 0},
+        { 0  , 0  , 1},
+    };
+
+    figure->setInicialPoint(
+                            Point(
+                                  (mat[0][X] * figureInicial.getX() + mat[0][Y] * figureInicial.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureInicial.getX() + mat[1][Y] * figureInicial.getY() + mat[1][2] * 1)
+                                  )
+                            );
+    figure->setFinalPoint(
+                            Point(
+                                  (mat[0][X] * figureFinal.getX() + mat[0][Y] * figureFinal.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureFinal.getX() + mat[1][Y] * figureFinal.getY() + mat[1][2] * 1)
+                                  )
+                            );
+
+}
+
+void Transformed::mirror5(Figure* figure){
+
+    GLint mat[3][3] = {
+        { 0  , 1  , 0},
+        { 1  , 0  , 0},
+        { 0  , 0  , 1},
+    };
+
+    figure->setInicialPoint(
+                            Point(
+                                  (mat[0][X] * figureInicial.getX() + mat[0][Y] * figureInicial.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureInicial.getX() + mat[1][Y] * figureInicial.getY() + mat[1][2] * 1)
+                                  )
+                            );
+    figure->setFinalPoint(
+                            Point(
+                                  (mat[0][X] * figureFinal.getX() + mat[0][Y] * figureFinal.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureFinal.getX() + mat[1][Y] * figureFinal.getY() + mat[1][2] * 1)
+                                  )
+                            );
+
+}
+
+void Transformed::mirror6(Figure* figure){
+
+    GLint mat[3][3] = {
+        { 0  , -1 , 0},
+        { -1 , 0  , 0},
+        { 0  , 0  , 1},
+    };
+
+    figure->setInicialPoint(
+                            Point(
+                                  (mat[0][X] * figureInicial.getX() + mat[0][Y] * figureInicial.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureInicial.getX() + mat[1][Y] * figureInicial.getY() + mat[1][2] * 1)
+                                  )
+                            );
+    figure->setFinalPoint(
+                            Point(
+                                  (mat[0][X] * figureFinal.getX() + mat[0][Y] * figureFinal.getY() + mat[0][2] * 1),
+                                  (mat[1][X] * figureFinal.getX() + mat[1][Y] * figureFinal.getY() + mat[1][2] * 1)
+                                  )
+                            );
+
+}
+
 void Transformed::setFinalPoint(Point final){
     this->final = final;
 }

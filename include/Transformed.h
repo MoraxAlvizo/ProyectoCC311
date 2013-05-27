@@ -17,6 +17,12 @@ class Transformed
         void rotate(Figure*);
         void move(Figure *);
         void scale(Figure *);
+        void mirror1(Figure *);
+        void mirror2(Figure *);
+        void mirror3(Figure *);
+        void mirror4(Figure *);
+        void mirror5(Figure *);
+        void mirror6(Figure *);
         void setFinalPoint(Point);
     protected:
         Point inicial;
