@@ -5756,3 +5756,112 @@
 	<cmath>
 	"Figure.h"
 
+1369761773 source:/home/omar/Documentos/ProyectoCC311/main.cpp
+	<gtkmm.h>
+	<gtkglmm.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<iostream>
+	"include/ToolsMenu.h"
+	"include/drawingOpenGL.h"
+	"include/App.h"
+
+1369773481 /home/omar/Documentos/ProyectoCC311/include/ToolsMenu.h
+	<gtkmm.h>
+	<gtkglmm.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1369779158 /home/omar/Documentos/ProyectoCC311/include/drawingOpenGL.h
+	<iostream>
+	<gtkmm.h>
+	<gtkglmm.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<vector>
+	"ToolsMenu.h"
+	"Point.h"
+	"Line.h"
+	"Circle.h"
+	"Ellipse.h"
+	"Polygon.h"
+	"Transformed.h"
+
+1369761773 /home/omar/Documentos/ProyectoCC311/include/Point.h
+	<GL/gl.h>
+	<GL/glu.h>
+
+1369761773 /home/omar/Documentos/ProyectoCC311/include/Line.h
+	<GL/gl.h>
+	<GL/glu.h>
+	<iostream>
+	<cmath>
+	"Figure.h"
+	"Point.h"
+
+1369776697 /home/omar/Documentos/ProyectoCC311/include/Figure.h
+	<vector>
+	<sstream>
+	<gtkmm.h>
+	"ToolsMenu.h"
+	"Point.h"
+
+1369761773 /home/omar/Documentos/ProyectoCC311/include/Circle.h
+	"Figure.h"
+	<cmath>
+
+1369761773 /home/omar/Documentos/ProyectoCC311/include/Ellipse.h
+	<cmath>
+	"Figure.h"
+
+1369775269 /home/omar/Documentos/ProyectoCC311/include/Polygon.h
+	<cmath>
+	<vector>
+	"Figure.h"
+	"Line.h"
+
+1369761773 /home/omar/Documentos/ProyectoCC311/include/Transformed.h
+	<cmath>
+	"Figure.h"
+
+1369767812 /home/omar/Documentos/ProyectoCC311/include/App.h
+	<gtkmm.h>
+	<gtkglmm.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	"ToolsMenu.h"
+	"drawingOpenGL.h"
+
+1369774149 source:/home/omar/Documentos/ProyectoCC311/src/Circle.cpp
+	"../include/Circle.h"
+
+1369774192 source:/home/omar/Documentos/ProyectoCC311/src/Ellipse.cpp
+	"../include/Ellipse.h"
+
+1369779769 source:/home/omar/Documentos/ProyectoCC311/src/Figure.cpp
+	"../include/Figure.h"
+
+1369774202 source:/home/omar/Documentos/ProyectoCC311/src/Line.cpp
+	"../include/Line.h"
+
+1369761773 source:/home/omar/Documentos/ProyectoCC311/src/Point.cpp
+	"../include/Point.h"
+	<iostream>
+
+1369781082 source:/home/omar/Documentos/ProyectoCC311/src/Polygon.cpp
+	"../include/Polygon.h"
+
+1369773600 source:/home/omar/Documentos/ProyectoCC311/src/ToolsMenu.cpp
+	"../include/ToolsMenu.h"
+	<iostream>
+
+1369766378 source:/home/omar/Documentos/ProyectoCC311/src/Transformed.cpp
+	"../include/Transformed.h"
+	<iostream>
+
+1369781282 source:/home/omar/Documentos/ProyectoCC311/src/drawingOpenGL.cpp
+	"../include/drawingOpenGL.h"
+
+1369767837 source:/home/omar/Documentos/ProyectoCC311/src/App.cpp
+	"../include/App.h"
+

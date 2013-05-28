@@ -162,10 +162,16 @@ void Transformed::mirror3(Figure* figure){
 
 void Transformed::mirror4(Figure* figure){
 
-    GLint mat[3][3] = {
-        {-1  , 0  , 0},
-        { 0  , -1 , 0},
-        { 0  , 0  , 1},
+    GLfloat angulo = M_PI;
+    GLfloat seno   = std::sin(angulo) ;
+    GLfloat coseno = std::cos(angulo) ;
+    GLfloat tx     = inicial.getX() * (1.0f - coseno) + inicial.getY() * seno;
+    GLfloat ty     = inicial.getY() * (1.0f - coseno) - inicial.getX() * seno;
+
+    GLfloat mat[3][3] = {
+        { coseno , -seno  , tx},
+        { seno   ,  coseno, ty},
+        { 0.0f   ,  0.0f  , 1.0f},
     };
 
     figure->setInicialPoint(

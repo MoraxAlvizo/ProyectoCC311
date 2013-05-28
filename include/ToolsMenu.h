@@ -19,6 +19,8 @@
 #define    MOVE         9
 #define    DRAW         10
 #define    SCALE        11
+#define    MIRROR4      12
+#define    SELECCIONAR  13
 
 
 class ToolsMenu:
@@ -35,7 +37,7 @@ class ToolsMenu:
 
         void addMirrowsButtons(Gtk::RadioButton *, Gtk::RadioButton *,
                                Gtk::RadioButton *, Gtk::RadioButton *,
-                               Gtk::RadioButton *, Gtk::RadioButton *);
+                               Gtk::RadioButton *);
 
     protected:
 
@@ -51,6 +53,8 @@ class ToolsMenu:
         Gtk::Button bRotate;
         Gtk::Button bMove;
         Gtk::Button bScale;
+        Gtk::Button bSeleccionar;
+        Gtk::RadioButton bMirrowButton4;
         Gtk::Image* m_image;
 
 
@@ -66,6 +70,8 @@ class ToolsMenu:
         void onButtonRotate ();
         void onButtonMove ();
         void onButtonScale ();
+        void onButtonMirror4 ();
+        void onButtonSeleccionar ();
 };
 
 #endif // TOOLSMENU_H

@@ -1,7 +1,7 @@
 #include "../include/Ellipse.h"
 
 Ellipse::Ellipse(GLint x, GLint y):
-    Figure(x , y)
+    Figure(x , y, ELIPSE)
 {
     //ctor
 }

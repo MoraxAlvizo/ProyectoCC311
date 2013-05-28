@@ -1,5 +1,7 @@
 #include "../include/drawingOpenGL.h"
 
+#define COLOR_SELECTED 1.0,0.0,1.0
+
 DrawingOpenGL::DrawingOpenGL(ToolsMenu* menu)
 {
     Glib::RefPtr<Gdk::GL::Config> glconfig;
@@ -7,6 +9,7 @@ DrawingOpenGL::DrawingOpenGL(ToolsMenu* menu)
     this->primerPintado = true;
     this->menu = menu;
     this->transform = NULL;
+    this->figure = NULL;
 
     this->add_events(Gdk::BUTTON_PRESS_MASK |
                      Gdk::BUTTON_RELEASE_MASK |
@@ -81,8 +84,6 @@ bool DrawingOpenGL::on_expose_event(GdkEventExpose* event)
     glColor3f(0.0,0.0,0.0);
     for(unsigned int i = 0; i < figuras.size(); i++)
         figuras[i]->draw();
-    for(unsigned int i = 0; i < polygons.size(); i++)
-        polygons[i]->draw();
     glFlush();
 	gldrawable -> gl_end();
 	return true;
@@ -100,17 +101,11 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
 	gldrawable->gl_begin(context);
 
 
+
     glClear(GL_COLOR_BUFFER_BIT);
     drawOrigin();
     glColor3f(0.0,0.0,0.0);
-    for(unsigned int i = 0; i < figuras.size(); i++)
-        figuras[i]->draw();
-    for(unsigned int i = 0; i < polygons.size(); i++)
-        polygons[i]->draw();
 
-
-
-    glColor3i(0,0,0);
     if(menu->action == DRAW){
         switch(menu->figura){
             case LINE:
@@ -123,43 +118,80 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
                 figuras.push_back(new Ellipse(event->x - (w/2),  (h/2) - event->y ));
                 break;
             case TRIANGULE:
-                polygons.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y  ,TRIANGULE));
+                figuras.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y  ,TRIANGULE));
                 break;
             case RECTANGULE:
-                polygons.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y  ,RECTANGULE));
+                figuras.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y  ,RECTANGULE));
                 break;
             case PENTAGONO:
-                polygons.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y  ,PENTAGONO));
+                figuras.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y  ,PENTAGONO));
                 break;
             case HEXAGONO:
-                polygons.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y ,HEXAGONO));
+                figuras.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y ,HEXAGONO));
                 break;
             case HEPTAGONO:
-                polygons.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y ,HEPTAGONO));
+                figuras.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y ,HEPTAGONO));
                 break;
+        }
+        if(menu->figura != SELECCIONAR){
+            figure = figuras.back();
+            selected = figuras.size() -1;
         }
 
     }
-
-    else{
-
-            switch(menu->figura){
+    else if(menu->action == MIRROR4 && !figuras.empty()){
+        //figure = figuras.back();
+        transform = new Transformed(event->x - (w/2),  (h/2) - event->y  ,figuras.back()->getInicialPoint(), figuras.back()->getFinalPoint());
+        transform->mirror4(figure);
+        switch(menu->figura){
                 case LINE:
-                case CIRCLE:
-                case ELIPSE:
-                    if(!figuras.empty())
-                        transform = new Transformed(event->x - (w/2),  (h/2) - event->y  ,figuras.back()->getInicialPoint(), figuras.back()->getFinalPoint());
+                {
+                    Line * line = (Line *) figure;
+                    line->calcule(DRAW);
                     break;
+                }
+                case CIRCLE:
+                {
+                    Circle * circle = (Circle *) figure;
+                    circle->calcule(DRAW);
+                    break;
+                }
+                case ELIPSE:
+                {
+                    Ellipse * elipse = (Ellipse *) figure;
+                    elipse->calcule(DRAW);
+                    break;
+                }
                 case TRIANGULE:
                 case RECTANGULE:
                 case PENTAGONO:
                 case HEXAGONO:
                 case HEPTAGONO:
-                    if(!polygons.empty())
-                        transform = new Transformed(event->x - (w/2),  (h/2) - event->y  ,polygons.back()->getInicialPoint(), polygons.back()->getFinalPoint());
+                {
+                    Polygon * polygon = (Polygon *)figure;
+                    polygon->calcule();
                     break;
+                }
             }
-          }
+
+    }
+    else if(menu->action == SELECCIONAR){
+        buscarFigura(event->x - (w/2),  (h/2) - event->y );
+        if(figure != NULL){
+            std::cout<< "Lo encontro \n";
+        }
+    }
+    else if(figure != NULL)
+        transform = new Transformed(event->x - (w/2),  (h/2) - event->y  ,figure->getInicialPoint(), figure->getFinalPoint());
+
+    glColor3f(0.0,0.0,0.0);
+
+    for(unsigned int i = 0; i < figuras.size(); i++)
+        figuras[i]->draw();
+
+    glColor3f(COLOR_SELECTED);
+    if(!figuras.empty())
+        figuras[selected]->draw();
 
     glFlush();
     gldrawable -> gl_end();
@@ -177,20 +209,18 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
 	gldrawable->gl_begin(context);
     //Eventos del mouse
 
+
+
     glClear(GL_COLOR_BUFFER_BIT);
     drawOrigin();
     glColor3f(0.0,0.0,0.0);
-    for(unsigned int i = 0; i < figuras.size(); i++)
-        figuras[i]->draw();
-    for(unsigned int i = 0; i < polygons.size(); i++)
-        polygons[i]->draw();
 
     if(event->state & GDK_BUTTON1_MASK){
 
-        switch(menu->figura){
+        switch(figure->getType()){
             case LINE:
             {
-                Line* linea = (Line *)figuras.back();
+                Line* linea = (Line *)figure;
 
                 switch(menu->action){
                     case MOVE:
@@ -217,7 +247,7 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
 
             case CIRCLE:
             {
-                Circle* circle = (Circle *)figuras.back();
+                Circle* circle = (Circle *)figure;
 
                 switch(menu->action){
                     case MOVE:
@@ -244,7 +274,7 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
             }
             case ELIPSE:
             {
-                Ellipse* elipse = (Ellipse *)figuras.back();
+                Ellipse* elipse = (Ellipse *)figure;
 
                 switch(menu->action){
                     case MOVE:
@@ -264,13 +294,9 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
                 break;
 
             }
-            case TRIANGULE:
-            case RECTANGULE:
-            case PENTAGONO:
-            case HEXAGONO:
-            case HEPTAGONO:
+            case POLYGON:
             {
-                Polygon* polygon = polygons.back();
+                Polygon* polygon = (Polygon *)figure;
 
                 switch(menu->action){
                     case MOVE:
@@ -298,6 +324,13 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
         }
     }
 
+    for(unsigned int i = 0; i < figuras.size(); i++){
+        figuras[i]->draw();
+    }
+
+    glColor3f(COLOR_SELECTED);
+        figuras[selected]->draw();
+
     glFlush();
     gldrawable -> gl_end();
 
@@ -309,6 +342,8 @@ bool DrawingOpenGL::on_button_release_event(GdkEventButton* event){
 
     Glib::RefPtr<Gdk::GL::Context>  context;
 	Glib::RefPtr<Gdk::GL::Drawable> gldrawable;
+	GLint w = get_width(),h = get_height();
+	Point pointRelease = Point(event->x - (w/2),  (h/2) - event->y);
 
     context = get_gl_context();
 	gldrawable = get_gl_drawable();
@@ -317,10 +352,21 @@ bool DrawingOpenGL::on_button_release_event(GdkEventButton* event){
     glClear(GL_COLOR_BUFFER_BIT);
     drawOrigin();
     glColor3f(0.0,0.0,0.0);
+
+    if(figure->getInicialPoint() == pointRelease){
+        figure->setFinalPoint(pointRelease);
+        std::cout << "Entro a eliminar figura" << std::endl;
+
+    }
+
+    std::cout << "Numero de figuras" << figuras.size() << std::endl;
+
     for(unsigned int i = 0; i < figuras.size(); i++)
         figuras[i]->draw();
-    for(unsigned int i = 0; i < polygons.size(); i++)
-        polygons[i]->draw();
+
+    glColor3f(COLOR_SELECTED);
+        figuras[selected]->draw();
+
     glFlush();
     gldrawable -> gl_end();
 
@@ -330,13 +376,6 @@ bool DrawingOpenGL::on_button_release_event(GdkEventButton* event){
 bool DrawingOpenGL::on_enter_notify_event(GdkEventCrossing* event){
 
     return true;
-}
-
-
-void DrawingOpenGL::crearBufferPixeles(){
-
-    GLint w = get_width(), h = get_height();
-    lienzo = new GLint [w*h];
 }
 
 void DrawingOpenGL::drawOrigin(){
@@ -375,37 +414,87 @@ void DrawingOpenGL::mirrior(int numMirror){
     drawOrigin();
     glColor3f(0.0,0.0,0.0);
 
-	transform = new Transformed(0, 0,polygons.back()->getInicialPoint(), polygons.back()->getFinalPoint());
+    if(!figuras.empty()){
+        transform = new Transformed(0, 0, figure->getInicialPoint(), figure->getFinalPoint());
+        switch(numMirror){
 
-    switch(numMirror){
+            case 1:
+            transform->mirror1(figure);
+            break;
+            case 2:
+            transform->mirror2(figure);
+            break;
+            case 3:
+            transform->mirror3(figure);
+            break;
+            case 4:
+            transform->mirror4(figure);
+            break;
+            case 5:
+            transform->mirror5(figure);
+            break;
+            case 6:
+            transform->mirror6(figure);
+            break;
+            }
 
-        case 1:
-        transform->mirror1(polygons.back());
-        break;
-        case 2:
-        transform->mirror2(polygons.back());
-        break;
-        case 3:
-        transform->mirror3(polygons.back());
-        break;
-        case 4:
-        transform->mirror4(polygons.back());
-        break;
-        case 5:
-        transform->mirror5(polygons.back());
-        break;
-        case 6:
-        transform->mirror6(polygons.back());
-        break;
-
+            switch(menu->figura){
+                case LINE:
+                {
+                    Line * line = (Line *) figure;
+                    line->calcule(DRAW);
+                    break;
+                }
+                case CIRCLE:
+                {
+                    Circle * circle = (Circle *) figure;
+                    circle->calcule(DRAW);
+                    break;
+                }
+                case ELIPSE:
+                {
+                    Ellipse * elipse = (Ellipse *) figure;
+                    elipse->calcule(DRAW);
+                    break;
+                }
+                case TRIANGULE:
+                case RECTANGULE:
+                case PENTAGONO:
+                case HEXAGONO:
+                case HEPTAGONO:
+                {
+                    Polygon * polygon = (Polygon *)figure;
+                    polygon->calcule();
+                    break;
+                }
+            }
     }
-    polygons.back()->calcule();
+
     for(unsigned int i = 0; i < figuras.size(); i++)
         figuras[i]->draw();
-    for(unsigned int i = 0; i < polygons.size(); i++)
-        polygons[i]->draw();
 
     glFlush();
     gldrawable -> gl_end();
 }
+
+void DrawingOpenGL::buscarFigura(GLint x, GLint y){
+
+    for(unsigned int i = 0; i < figuras.size(); i++){
+        if(figuras[i]->buscarPunto(x,y)
+        || figuras[i]->buscarPunto(x+1,y+1)
+        || figuras[i]->buscarPunto(x+1,y-1)
+        || figuras[i]->buscarPunto(x-1,y+1)
+        || figuras[i]->buscarPunto(x-1,y-1)
+        || figuras[i]->buscarPunto(x  ,y+1)
+        || figuras[i]->buscarPunto(x+1,y  )
+        || figuras[i]->buscarPunto(x  ,y-1)
+        || figuras[i]->buscarPunto(x-1,y  )
+           ){
+                figure = figuras.at(i);
+                selected = i;
+                return;
+               }
+    }
+}
+
 

@@ -2,7 +2,7 @@
 
 
 Line::Line(GLint x, GLint y):
-    Figure(x, y)
+    Figure(x, y, LINE)
 {
 
 }

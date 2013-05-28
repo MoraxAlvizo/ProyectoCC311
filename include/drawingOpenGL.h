@@ -30,18 +30,21 @@ class DrawingOpenGL :
         virtual ~DrawingOpenGL();
         bool primerPintado;
         int drawing;
+        int selected;
         ToolsMenu* menu;
         Transformed* transform;
         std::vector<Figure*> figuras;
         std::vector<Polygon*> polygons;
+        Figure * figure;
 
+        void buscarFigura(GLint , GLint);
         Figure* getLastFigura();
         void mirrior(int );
 
 
     protected:
         //atributos
-        GLint *lienzo;
+        Point pointRelease;
 
         void on_realize();
         virtual bool on_expose_event(GdkEventExpose* event);
@@ -50,11 +53,8 @@ class DrawingOpenGL :
         virtual bool on_button_release_event(GdkEventButton* event);
         virtual bool on_configure_event (GdkEventConfigure*event);
         virtual bool on_enter_notify_event (GdkEventCrossing*event);
+
         void drawOrigin();
-        void crearBufferPixeles();
-
-
-
 };
 
 

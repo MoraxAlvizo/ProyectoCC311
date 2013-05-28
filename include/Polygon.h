@@ -17,6 +17,7 @@ class Polygon:
     protected:
         GLshort faces;
         std::vector<Point> vertex;
+        bool buscarPunto(GLint, GLint);
         void polar(GLint x, GLint y,GLint r,GLfloat a, GLint pos);
     private:
 };

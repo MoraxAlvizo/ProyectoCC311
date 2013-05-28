@@ -1,7 +1,7 @@
 #include "../include/Polygon.h"
 
 Polygon::Polygon(GLint x, GLint y, GLshort faces):
-    Figure(x , y)
+    Figure(x , y, POLYGON)
 {
     //ctor
     this->faces = faces;
@@ -11,6 +11,7 @@ Polygon::~Polygon()
 {
     //dtor
 }
+
 
 void Polygon::calcule(){
 
@@ -31,6 +32,40 @@ void Polygon::calcule(){
     }
 
 
+}
+
+bool Polygon::buscarPunto(GLint x, GLint y){
+
+    // Se obtiene el ultimo punto
+    Point inicial = vertex[faces - 1];
+    Point final, temp;
+    Point punto_buscar = Point(x,y);
+    float b;
+    float m;
+    float res;
+
+    for (unsigned int j = 0; j < faces; j++){
+        final = vertex[j];
+
+        /*if (inicial.getX() > final.getX()){
+            temp = inicial;
+            inicial.setX(final.getX());
+            final.setX(temp.getX());
+        }
+        if (inicial.getY() > final.getY()){
+            temp = inicial;
+            inicial.setY(final.getY());
+            final.setY(temp.getY());
+        }*/
+
+        m = ((float)final.getY() - (float)inicial.getY()) / ((float)final.getX() - (float)inicial.getX());
+        b = (float)inicial.getY() - m*(float)inicial.getX();
+        res = (float)punto_buscar.getY() - m*(float)punto_buscar.getX() - b;
+        if ( res >= -1 && res <= 1)
+            return true;
+        inicial = final;
+    }
+    return false;
 }
 
 void Polygon::polar(GLint x, GLint y,GLint r,GLfloat a, GLint pos){

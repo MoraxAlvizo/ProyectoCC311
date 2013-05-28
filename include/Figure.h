@@ -3,26 +3,32 @@
 
 #include <vector>
 #include <sstream>
-#include "Point.h"
 #include <gtkmm.h>
+
+#include "ToolsMenu.h"
+#include "Point.h"
+#define  POLYGON 13
 
 class Figure
 {
     public:
-        Figure(GLint x, GLint y);
+        Figure(GLint x, GLint y, int tipo);
         virtual ~Figure();
         void setFinalPoint(Point final);
         void setInicialPoint(Point inicial);
         Point getFinalPoint();
         Point getInicialPoint();
+        virtual int getType();
         Glib::RefPtr<Gtk::TextBuffer> getBuffer();
 
-        void draw();
+        virtual void draw();
+        virtual bool buscarPunto(GLint, GLint);
         std::vector<Point> getPoints();
         void setPoints(std::vector<Point>);
     protected:
         Point   inicial;
         Point   final;
+        int     tipo;
         std::vector<Point> points;
         Glib::RefPtr<Gtk::TextBuffer> buffer;
 

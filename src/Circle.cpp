@@ -1,7 +1,7 @@
 #include "../include/Circle.h"
 
 Circle::Circle(GLint x, GLint y):
-    Figure(x,y)
+    Figure(x,y, CIRCLE)
 {
     //ctor
 }

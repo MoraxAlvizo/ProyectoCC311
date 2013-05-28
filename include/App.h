@@ -32,14 +32,12 @@ class App : public Gtk::Window
         Gtk::RadioButton bRadioMirrow1;
         Gtk::RadioButton bRadioMirrow2;
         Gtk::RadioButton bRadioMirrow3;
-        Gtk::RadioButton bRadioMirrow4;
         Gtk::RadioButton bRadioMirrow5;
         Gtk::RadioButton bRadioMirrow6;
 
         void onButtonMirror1 ();
         void onButtonMirror2 ();
         void onButtonMirror3 ();
-        void onButtonMirror4 ();
         void onButtonMirror5 ();
         void onButtonMirror6 ();
 
