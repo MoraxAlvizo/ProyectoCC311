@@ -146,7 +146,7 @@ void ToolsMenu::onButtonHexagono ()
 
 void ToolsMenu::onButtonHeptagono ()
 {
-    figura = HEPTAGONO;
+    figura = OCTAGON;
     action = DRAW;
 }
 

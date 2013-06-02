@@ -44,7 +44,7 @@ bool Polygon::buscarPunto(GLint x, GLint y){
     float m;
     float res;
 
-    for (unsigned int j = 0; j < faces; j++){
+    for (int j = 0; j < faces; j++){
         final = vertex[j];
 
         /*if (inicial.getX() > final.getX()){

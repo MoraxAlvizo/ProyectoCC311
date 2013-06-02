@@ -2,7 +2,9 @@
 
 App::App():
     GL(&toolsMenu),
+    colorWindow(&colorSelection),
     box(false, 3),
+    colorBox(2),
     toolsMenu(false),
     bRadioMirrow1("1"),
     bRadioMirrow2("2"),
@@ -39,10 +41,16 @@ App::App():
     bRadioMirrow5.signal_pressed ().connect(sigc::mem_fun(*this, &App::onButtonMirror5));
     bRadioMirrow6.signal_pressed ().connect(sigc::mem_fun(*this, &App::onButtonMirror6));
 
+    colorBox.set_border_width(30);
+    colorBox.pack_start(colorSelection);
+    colorBox.pack_start(colorWindow);
+
     //Add the Notebook pages:
+    pestana.set_border_width(10);
     pestana.append_page(box, "Drawing Area");
     pestana.append_page(sWindow, "Dates");
-    pestana.add(box);
+    pestana.append_page(colorBox, "Color convert");
+
     pestana.signal_switch_page().connect(sigc::mem_fun(*this, &App::on_switch_page) );
     GL.set_size_request(1000, 600);
 

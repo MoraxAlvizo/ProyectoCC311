@@ -145,7 +145,7 @@ int Line::signo(int num)
                     }
                     points.push_back(Point(x, y));
                     if(!draw){
-                        sprintf(cont,"%d\t%d\t\t[ %d , %d ] \n",contador, p, x,y);
+                        sprintf(cont,"%10d   %10d   [ %d , %d ] \n",contador, p, x,y);
                         buffer->set_text(buffer->get_text().append(cont));
                         contador++;
                     }

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1369606173 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/main.cpp
+1369761773 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/main.cpp
 	<gtkmm.h>
 	<gtkglmm.h>
 	<GL/gl.h>
@@ -5648,13 +5648,13 @@
 	<gtkmm/drawingarea.h>
 	<gtkmm/gl/widget.h>
 
-1369693457 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/ToolsMenu.h
+1369844454 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/ToolsMenu.h
 	<gtkmm.h>
 	<gtkglmm.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
-1369694187 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/drawingOpenGL.h
+1369779158 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/drawingOpenGL.h
 	<iostream>
 	<gtkmm.h>
 	<gtkglmm.h>
@@ -5669,7 +5669,7 @@
 	"Polygon.h"
 	"Transformed.h"
 
-1369661247 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Point.h
+1369761773 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Point.h
 	<GL/gl.h>
 	<GL/glu.h>
 
@@ -5681,24 +5681,25 @@
 	<GL/gl.h>
 	<GL/glu.h>
 
-1369694716 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/App.h
+1369943601 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/App.h
 	<gtkmm.h>
 	<gtkglmm.h>
 	<GL/gl.h>
 	<GL/glu.h>
 	"ToolsMenu.h"
 	"drawingOpenGL.h"
+	"ColorWindow.h"
 
-1369695230 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/App.cpp
+1370197415 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/App.cpp
 	"../include/App.h"
 
 1369491666 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/BMP.cpp
 	"../include/BMP.h"
 
-1369684586 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Line.cpp
+1370015603 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Line.cpp
 	"../include/Line.h"
 
-1369684029 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Line.h
+1369761773 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Line.h
 	<GL/gl.h>
 	<GL/glu.h>
 	<iostream>
@@ -5706,53 +5707,55 @@
 	"Figure.h"
 	"Point.h"
 
-1369661295 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Point.cpp
+1369761773 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Point.cpp
 	"../include/Point.h"
 	<iostream>
 
-1369693616 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/ToolsMenu.cpp
+1369844485 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/ToolsMenu.cpp
 	"../include/ToolsMenu.h"
+	<iostream>
 
-1369695111 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/drawingOpenGL.cpp
+1369844525 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/drawingOpenGL.cpp
 	"../include/drawingOpenGL.h"
 
-1369682379 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Figure.cpp
+1369779769 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Figure.cpp
 	"../include/Figure.h"
 
-1369683109 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Figure.h
+1369776697 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Figure.h
 	<vector>
 	<sstream>
-	"Point.h"
 	<gtkmm.h>
+	"ToolsMenu.h"
+	"Point.h"
 
-1369686614 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Circle.cpp
+1369774149 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Circle.cpp
 	"../include/Circle.h"
 
-1369685680 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Circle.h
+1369761773 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Circle.h
 	"Figure.h"
 	<cmath>
 
-1369687101 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Ellipse.cpp
+1369774192 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Ellipse.cpp
 	"../include/Ellipse.h"
 
-1369686867 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Ellipse.h
+1369761773 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Ellipse.h
 	<cmath>
 	"Figure.h"
 
-1369665228 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Polygon.cpp
+1369844485 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Polygon.cpp
 	"../include/Polygon.h"
 
-1369664350 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Polygon.h
+1369775269 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Polygon.h
 	<cmath>
 	<vector>
 	"Figure.h"
 	"Line.h"
 
-1369695335 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Transformed.cpp
+1369936230 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Transformed.cpp
 	"../include/Transformed.h"
 	<iostream>
 
-1369693878 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Transformed.h
+1369761773 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Transformed.h
 	<cmath>
 	"Figure.h"
 
@@ -5864,4 +5867,19 @@
 
 1369767837 source:/home/omar/Documentos/ProyectoCC311/src/App.cpp
 	"../include/App.h"
+
+1370202586 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/ColorWindow.cpp
+	"../include/ColorWindow.h"
+
+1370202107 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/ColorWindow.h
+	<gtkmm.h>
+	"Color.h"
+
+1370199178 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Color.h
+	<GL/glut.h>
+	<iostream>
+
+1370199227 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Color.cpp
+	"../include/Color.h"
+	<math.h>
 

@@ -7,6 +7,7 @@
 #include <GL/glu.h>
 #include "ToolsMenu.h"
 #include "drawingOpenGL.h"
+#include "ColorWindow.h"
 
 
 class App : public Gtk::Window
@@ -20,7 +21,10 @@ class App : public Gtk::Window
     protected:
         // member widgets:
         DrawingOpenGL GL;
+        ColorWindow colorWindow;
+        Gtk::ColorSelection colorSelection;
         Gtk::VBox box;
+        Gtk::VBox colorBox;
         ToolsMenu toolsMenu;
         //Signal handlers:
         void on_button_quit();

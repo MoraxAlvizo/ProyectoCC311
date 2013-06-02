@@ -14,8 +14,8 @@
 #define    RECTANGULE   4
 #define    PENTAGONO    5
 #define    HEXAGONO     6
-#define    HEPTAGONO    7
-#define    ROTATE       8
+#define    OCTAGON      8
+#define    ROTATE       7
 #define    MOVE         9
 #define    DRAW         10
 #define    SCALE        11

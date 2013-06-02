@@ -129,8 +129,8 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
             case HEXAGONO:
                 figuras.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y ,HEXAGONO));
                 break;
-            case HEPTAGONO:
-                figuras.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y ,HEPTAGONO));
+            case OCTAGON:
+                figuras.push_back(new Polygon(event->x - (w/2),  (h/2) - event->y ,8));
                 break;
         }
         if(menu->figura != SELECCIONAR){
@@ -143,7 +143,7 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
         //figure = figuras.back();
         transform = new Transformed(event->x - (w/2),  (h/2) - event->y  ,figuras.back()->getInicialPoint(), figuras.back()->getFinalPoint());
         transform->mirror4(figure);
-        switch(menu->figura){
+        switch(figure->getType()){
                 case LINE:
                 {
                     Line * line = (Line *) figure;
@@ -162,11 +162,7 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
                     elipse->calcule(DRAW);
                     break;
                 }
-                case TRIANGULE:
-                case RECTANGULE:
-                case PENTAGONO:
-                case HEXAGONO:
-                case HEPTAGONO:
+                case POLYGON:
                 {
                     Polygon * polygon = (Polygon *)figure;
                     polygon->calcule();
@@ -438,7 +434,7 @@ void DrawingOpenGL::mirrior(int numMirror){
             break;
             }
 
-            switch(menu->figura){
+            switch(figure->getType()){
                 case LINE:
                 {
                     Line * line = (Line *) figure;
@@ -457,11 +453,7 @@ void DrawingOpenGL::mirrior(int numMirror){
                     elipse->calcule(DRAW);
                     break;
                 }
-                case TRIANGULE:
-                case RECTANGULE:
-                case PENTAGONO:
-                case HEXAGONO:
-                case HEPTAGONO:
+                case POLYGON:
                 {
                     Polygon * polygon = (Polygon *)figure;
                     polygon->calcule();
