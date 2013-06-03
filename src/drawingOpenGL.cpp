@@ -233,10 +233,7 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
                         linea->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
                         break;
                 }
-                copyLine.setInicialPoint(transform->getInicialFigurePoint());
-                copyLine.setFinalPoint(transform->getFinalFigurePoint());
-                copyLine.calcule(true);
-                copyLine.drawCopy();
+
                 linea->calcule(true);
                 linea->draw();
                 break;
