@@ -29,6 +29,12 @@ void Transformed::rotate(Figure* figure){
         { 0.0f   ,  0.0f  , 1.0f},
     };
 
+    figure->setInicialPoint(figureInicial);
+    figure->setFinalPoint(figureFinal);
+    figure->calcule(true);
+    figure->drawCopy();
+
+
     figure->setInicialPoint(
                             Point(
                                   (mat[0][X] * figureInicial.getX() + mat[0][Y] * figureInicial.getY() + mat[0][2] * 1),
@@ -55,6 +61,11 @@ void Transformed::scale(Figure* figure){
         { 0  , 0  , 1},
     };
 
+    figure->setInicialPoint(figureInicial);
+    figure->setFinalPoint(figureFinal);
+    figure->calcule(true);
+    figure->drawCopy();
+
     figure->setInicialPoint(
                             Point(
                                   (mat[0][X] * figureInicial.getX() + mat[0][Y] * figureInicial.getY() + mat[0][2] * 1),
@@ -75,6 +86,11 @@ void Transformed::move(Figure* figure){
 
     GLint tx = final.getX() - inicial.getX();
     GLint ty = final.getY() - inicial.getY();
+
+    figure->setInicialPoint(figureInicial);
+    figure->setFinalPoint(figureFinal);
+    figure->calcule(true);
+    figure->drawCopy();
 
     figure->setInicialPoint(
                             Point(
@@ -237,4 +253,12 @@ void Transformed::mirror6(Figure* figure){
 
 void Transformed::setFinalPoint(Point final){
     this->final = final;
+}
+
+Point Transformed::getInicialFigurePoint(){
+    return figureFinal;
+}
+
+Point Transformed::getFinalFigurePoint(){
+    return figureInicial;
 }

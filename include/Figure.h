@@ -22,6 +22,8 @@ class Figure
         Glib::RefPtr<Gtk::TextBuffer> getBuffer();
 
         virtual void draw();
+        virtual void drawCopy();
+        virtual void calcule(bool ){}
         virtual bool buscarPunto(GLint, GLint);
         std::vector<Point> getPoints();
         void setPoints(std::vector<Point>);

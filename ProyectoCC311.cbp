@@ -43,6 +43,7 @@
 		</Linker>
 		<Unit filename="include/App.h" />
 		<Unit filename="include/Circle.h" />
+		<Unit filename="include/Color.h" />
 		<Unit filename="include/ColorWindow.h" />
 		<Unit filename="include/Ellipse.h" />
 		<Unit filename="include/Figure.h" />
@@ -57,6 +58,7 @@
 		</Unit>
 		<Unit filename="src/App.cpp" />
 		<Unit filename="src/Circle.cpp" />
+		<Unit filename="src/Color.cpp" />
 		<Unit filename="src/ColorWindow.cpp" />
 		<Unit filename="src/Ellipse.cpp" />
 		<Unit filename="src/Figure.cpp" />

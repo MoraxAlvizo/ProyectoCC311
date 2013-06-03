@@ -5654,7 +5654,7 @@
 	<GL/gl.h>
 	<GL/glu.h>
 
-1369779158 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/drawingOpenGL.h
+1370222758 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/drawingOpenGL.h
 	<iostream>
 	<gtkmm.h>
 	<gtkglmm.h>
@@ -5681,7 +5681,7 @@
 	<GL/gl.h>
 	<GL/glu.h>
 
-1369943601 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/App.h
+1370208541 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/App.h
 	<gtkmm.h>
 	<gtkglmm.h>
 	<GL/gl.h>
@@ -5690,13 +5690,13 @@
 	"drawingOpenGL.h"
 	"ColorWindow.h"
 
-1370197415 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/App.cpp
+1370208528 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/App.cpp
 	"../include/App.h"
 
 1369491666 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/BMP.cpp
 	"../include/BMP.h"
 
-1370015603 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Line.cpp
+1370212166 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Line.cpp
 	"../include/Line.h"
 
 1369761773 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Line.h
@@ -5715,47 +5715,47 @@
 	"../include/ToolsMenu.h"
 	<iostream>
 
-1369844525 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/drawingOpenGL.cpp
+1370223357 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/drawingOpenGL.cpp
 	"../include/drawingOpenGL.h"
 
-1369779769 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Figure.cpp
+1370219425 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Figure.cpp
 	"../include/Figure.h"
 
-1369776697 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Figure.h
+1370223411 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Figure.h
 	<vector>
 	<sstream>
 	<gtkmm.h>
 	"ToolsMenu.h"
 	"Point.h"
 
-1369774149 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Circle.cpp
+1370214793 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Circle.cpp
 	"../include/Circle.h"
 
 1369761773 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Circle.h
 	"Figure.h"
 	<cmath>
 
-1369774192 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Ellipse.cpp
+1370217661 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Ellipse.cpp
 	"../include/Ellipse.h"
 
 1369761773 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Ellipse.h
 	<cmath>
 	"Figure.h"
 
-1369844485 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Polygon.cpp
+1370221368 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Polygon.cpp
 	"../include/Polygon.h"
 
-1369775269 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Polygon.h
+1370220805 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Polygon.h
 	<cmath>
 	<vector>
 	"Figure.h"
 	"Line.h"
 
-1369936230 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Transformed.cpp
+1370222996 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Transformed.cpp
 	"../include/Transformed.h"
 	<iostream>
 
-1369761773 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Transformed.h
+1370222935 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Transformed.h
 	<cmath>
 	"Figure.h"
 
@@ -5868,10 +5868,10 @@
 1369767837 source:/home/omar/Documentos/ProyectoCC311/src/App.cpp
 	"../include/App.h"
 
-1370202586 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/ColorWindow.cpp
+1370210697 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/ColorWindow.cpp
 	"../include/ColorWindow.h"
 
-1370202107 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/ColorWindow.h
+1370208717 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/ColorWindow.h
 	<gtkmm.h>
 	"Color.h"
 
@@ -5879,7 +5879,7 @@
 	<GL/glut.h>
 	<iostream>
 
-1370199227 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Color.cpp
+1370209590 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Color.cpp
 	"../include/Color.h"
 	<math.h>
 

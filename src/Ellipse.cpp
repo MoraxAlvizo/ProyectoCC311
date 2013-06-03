@@ -17,9 +17,24 @@ Ellipse::~Ellipse()
     GLint rx = std::abs(inicial.getX() - final.getX());
     GLint ry = std::abs(inicial.getY() - final.getY());
     int contador = 0;
+    char cont[500];
 	long p, px, py, x, y, ry2, rx2, tworx2, twory2;
 
-	points.clear();
+    if(draw)
+        points.clear();
+	buffer->set_text("Elipse -  Algoritmo de punto medio\n\n");
+    sprintf(cont,"%10s\t|\t%15s\t|\t%15s\t|\t%15s\t|\t%s\n","K","Pk","2ry2Xk+1","2rx2Yk+1","[Xk+1, Yk+1]");
+    buffer->set_text(buffer->get_text().append(cont));
+    buffer->set_text(buffer->get_text().append("----------------------------------------"
+                                               "----------------------------------------"
+                                               "----------------------------------------"
+                                               "----------------------------------------"
+                                               "----------------------------------------"
+                                               "----------------------------------------"
+                                               "----------------------------------------"
+                                               "----------------------------------------"
+                                               "----------------------------------------"
+                                               "\n"));
 
 	ry2 = ry * ry;
 	rx2 = rx * rx;
@@ -73,7 +88,7 @@ Ellipse::~Ellipse()
 
 void Ellipse::applySymmetry(GLint x, GLint y, bool draw,GLint contador, GLint p, GLint _2rx2, GLint _2ry2){
 
-    char cont[200];
+    char cont[500];
 
     if(draw){
         points.push_back(Point(inicial.getX() + x, inicial.getY() + y));
@@ -82,13 +97,12 @@ void Ellipse::applySymmetry(GLint x, GLint y, bool draw,GLint contador, GLint p,
         points.push_back(Point(inicial.getX() - x, inicial.getY() - y));
     }
     else{
-        sprintf(cont,"%d\t%d\t\t[ %d , %d ][ %d , %d ][ %d , %d ][ %d , %d ]\t%d\t%d\n",contador,p,
+        sprintf(cont,"%10d\t|\t%15d\t|\t%15d\t|\t%15d\t|\t[ %8d , %8d ][ %8d , %8d ][ %8d , %8d ][ %8d , %8d ]\n",
+                               contador,p,_2ry2 * x,_2rx2 * y,
                                inicial.getX() + x, inicial.getY() + y,
                                inicial.getX() - x, inicial.getY() + y,
                                inicial.getX() + x, inicial.getY() - y,
-                               inicial.getX() - x, inicial.getY() - y,
-                               _2ry2 * x,
-                               _2rx2 * y
+                               inicial.getX() - x, inicial.getY() - y
 
                 );
         buffer->set_text(buffer->get_text().append(cont));

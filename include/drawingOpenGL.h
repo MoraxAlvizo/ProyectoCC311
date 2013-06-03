@@ -34,7 +34,6 @@ class DrawingOpenGL :
         ToolsMenu* menu;
         Transformed* transform;
         std::vector<Figure*> figuras;
-        std::vector<Polygon*> polygons;
         Figure * figure;
 
         void buscarFigura(GLint , GLint);

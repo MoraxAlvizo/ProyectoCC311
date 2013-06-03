@@ -24,6 +24,8 @@ class Transformed
         void mirror5(Figure *);
         void mirror6(Figure *);
         void setFinalPoint(Point);
+        Point getInicialFigurePoint();
+        Point getFinalFigurePoint();
     protected:
         Point inicial;
         Point final;

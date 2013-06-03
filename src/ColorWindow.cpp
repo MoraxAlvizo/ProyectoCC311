@@ -3,7 +3,6 @@
 ColorWindow::ColorWindow(Gtk::ColorSelection* colorSelection):
     HBox(8),
     color(RGB),
-    bConvert("Convertir"),
     //CMY
     bCMY(3),
     _1CMY(2),
@@ -63,9 +62,6 @@ ColorWindow::ColorWindow(Gtk::ColorSelection* colorSelection):
     set_border_width(10);
     this->colorSelection = colorSelection;
 
-    buttons.set_layout(Gtk::BUTTONBOX_END);
-	buttons.pack_start(bConvert);
-
     //CMY
     _1CMY.pack_start(lcCMY);
     _1CMY.pack_start(cCMY );
@@ -73,9 +69,9 @@ ColorWindow::ColorWindow(Gtk::ColorSelection* colorSelection):
     _2CMY.pack_start(mCMY );
     _3CMY.pack_start(lyCMY);
     _3CMY.pack_start(yCMY );
-    bCMY.pack_start(_1CMY , Gtk::PACK_SHRINK);
-    bCMY.pack_start(_2CMY , Gtk::PACK_SHRINK);
-    bCMY.pack_start(_3CMY , Gtk::PACK_SHRINK);
+    bCMY.pack_start(_1CMY );
+    bCMY.pack_start(_2CMY );
+    bCMY.pack_start(_3CMY );
 
     //CMYK
     bCMYK.pack_start(_1CMYK);
@@ -141,11 +137,10 @@ ColorWindow::ColorWindow(Gtk::ColorSelection* colorSelection):
     pack_start(bYIQ);
     pack_start(bYUV);
     pack_start(bXYZ);
-    pack_start(buttons);
 
     set_size_request (100, 100);
 
-    bConvert.signal_pressed ().connect(sigc::mem_fun(*this, &ColorWindow::onButtonConvert));
+    (*colorSelection).signal_color_changed().connect(sigc::mem_fun(*this, &ColorWindow::onButtonConvert));
 
 }
 
@@ -160,7 +155,7 @@ void ColorWindow::onButtonConvert(){
     GLfloat* colorArray;
 
     color.setColor(RGB,
-                  newColor.get_red()/65535,
+                  newColor.get_red()/65535.0,
                   newColor.get_green()/65535.0,
                   newColor.get_blue() /65535.0);
 

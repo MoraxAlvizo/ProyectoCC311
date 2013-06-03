@@ -40,6 +40,20 @@ void Figure::draw()
         points[i].drawPoint();
 }
 
+void Figure::drawCopy()
+{
+    int patron = 0;
+    for(unsigned int i = 0; i < points.size(); i++){
+        if(patron > 0 && patron <= 70)
+            points[i].drawPoint();
+        if(patron == 140)
+            patron = 0;
+        patron++;
+    }
+
+}
+
+
 std::vector<Point> Figure::getPoints(){
     return points;
 }

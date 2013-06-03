@@ -2,6 +2,7 @@
 
 App::App():
     GL(&toolsMenu),
+    colorSelection(),
     colorWindow(&colorSelection),
     box(false, 3),
     colorBox(2),

@@ -70,7 +70,7 @@ float Color::getMay(){
 }
 
 float Color::getMin(){
-    float min = 0;
+    float min = this->dato[0];
     for (int i = 0; i < this->size; i++){
         if (this->dato[i] < min)
             min = this->dato[i];
@@ -98,7 +98,7 @@ void Color::toRGB(){
             break;
         case HSV:
             Hi = ((int)H_HSV/60) % 6;
-            f = (H_HSV/60) - Hi;
+            f = (H_HSV/60.0) - Hi;
             p = V_HSV * (1 - S_HSV);
             q = V_HSV * (1 - f*S_HSV);
             t = V_HSV * (1 - (1-f)*S_HSV);
@@ -251,11 +251,11 @@ void Color::toHSV(){
     switch(this->type){
         case RGB:
             if (max == R_RGB)
-                h = 60 * ((int)((G_RGB - B_RGB)/diferencia) % 6);
+                h = 60.0 * ((int)((G_RGB - B_RGB)/diferencia) % 6);
             else if (max == G_RGB)
-                h = 60 * ((int)((B_RGB - R_RGB)/diferencia) + 2);
+                h = 60.0 * ((int)((B_RGB - R_RGB)/diferencia) + 2.0);
             else if (max == B_RGB)
-                h = 60 * ((int)((R_RGB - G_RGB)/diferencia) + 4);
+                h = 60.0 * ((int)((R_RGB - G_RGB)/diferencia) + 4.0);
 
             if (diferencia == 0)
                 s = 0;

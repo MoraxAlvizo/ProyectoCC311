@@ -16,8 +16,6 @@ class ColorWindow:
         Gtk::ColorSelection* colorSelection;
         Color color;
 
-        Gtk::HButtonBox buttons;
-        Gtk::Button bConvert;
         //CMY
         Gtk::VBox bCMY;
         Gtk::HBox _1CMY;

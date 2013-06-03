@@ -14,6 +14,7 @@ class Polygon:
         virtual ~Polygon();
         void calcule();
         void draw();
+        void drawCopy();
     protected:
         GLshort faces;
         std::vector<Point> vertex;

@@ -61,8 +61,6 @@ bool DrawingOpenGL::on_configure_event(GdkEventConfigure*event){
     glFlush();
 	gldrawable->gl_end();
 
-	glEnable(GL_LINE_STIPPLE);
-
 	return TRUE;
 
 }
@@ -177,8 +175,9 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
             std::cout<< "Lo encontro \n";
         }
     }
-    else if(figure != NULL)
+    else if(figure != NULL){
         transform = new Transformed(event->x - (w/2),  (h/2) - event->y  ,figure->getInicialPoint(), figure->getFinalPoint());
+    }
 
     glColor3f(0.0,0.0,0.0);
 
@@ -205,18 +204,17 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
 	gldrawable->gl_begin(context);
     //Eventos del mouse
 
-
-
     glClear(GL_COLOR_BUFFER_BIT);
     drawOrigin();
     glColor3f(0.0,0.0,0.0);
 
-    if(event->state & GDK_BUTTON1_MASK){
+    if((event->state & GDK_BUTTON1_MASK) && figure!=NULL){
 
         switch(figure->getType()){
             case LINE:
             {
                 Line* linea = (Line *)figure;
+                Line copyLine = Line(0,0);
 
                 switch(menu->action){
                     case MOVE:
@@ -235,6 +233,10 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
                         linea->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
                         break;
                 }
+                copyLine.setInicialPoint(transform->getInicialFigurePoint());
+                copyLine.setFinalPoint(transform->getFinalFigurePoint());
+                copyLine.calcule(true);
+                copyLine.drawCopy();
                 linea->calcule(true);
                 linea->draw();
                 break;
@@ -324,8 +326,11 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
         figuras[i]->draw();
     }
 
-    glColor3f(COLOR_SELECTED);
+    if(figure != NULL){
+        glColor3f(COLOR_SELECTED);
         figuras[selected]->draw();
+    }
+
 
     glFlush();
     gldrawable -> gl_end();
@@ -349,7 +354,7 @@ bool DrawingOpenGL::on_button_release_event(GdkEventButton* event){
     drawOrigin();
     glColor3f(0.0,0.0,0.0);
 
-    if(figure->getInicialPoint() == pointRelease){
+    if(figure!= NULL && figure->getInicialPoint() == pointRelease){
         figure->setFinalPoint(pointRelease);
         std::cout << "Entro a eliminar figura" << std::endl;
 
@@ -360,8 +365,10 @@ bool DrawingOpenGL::on_button_release_event(GdkEventButton* event){
     for(unsigned int i = 0; i < figuras.size(); i++)
         figuras[i]->draw();
 
-    glColor3f(COLOR_SELECTED);
+    if(figure != NULL){
+        glColor3f(COLOR_SELECTED);
         figuras[selected]->draw();
+    }
 
     glFlush();
     gldrawable -> gl_end();
@@ -412,6 +419,7 @@ void DrawingOpenGL::mirrior(int numMirror){
 
     if(!figuras.empty()){
         transform = new Transformed(0, 0, figure->getInicialPoint(), figure->getFinalPoint());
+        figure -> drawCopy();
         switch(numMirror){
 
             case 1:

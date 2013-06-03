@@ -92,3 +92,22 @@ void Polygon::draw(){
 
 
 }
+
+void Polygon::drawCopy(){
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(2, 0x00FF);
+    if(vertex.size() != 0){
+        glBegin(GL_LINES);
+        for(int i = 1; i<faces ; i++){
+
+            glVertex2i(vertex[i-1].getX(), vertex[i-1].getY());
+            glVertex2i(vertex[i].getX(), vertex[i].getY());
+
+        }
+        glVertex2i(vertex[faces-1].getX(), vertex[faces-1].getY());
+        glVertex2i(vertex[0].getX(), vertex[0].getY());
+        glEnd();
+    }
+    glDisable(GL_LINE_STIPPLE);
+
+}

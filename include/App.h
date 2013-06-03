@@ -21,8 +21,8 @@ class App : public Gtk::Window
     protected:
         // member widgets:
         DrawingOpenGL GL;
-        ColorWindow colorWindow;
         Gtk::ColorSelection colorSelection;
+        ColorWindow colorWindow;
         Gtk::VBox box;
         Gtk::VBox colorBox;
         ToolsMenu toolsMenu;

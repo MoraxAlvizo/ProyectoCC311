@@ -5,6 +5,7 @@ Line::Line(GLint x, GLint y):
     Figure(x, y, LINE)
 {
 
+
 }
 
 Line::~Line()
@@ -34,6 +35,10 @@ int Line::signo(int num)
     int contador = 0;
     char cont[50];
     buffer->set_text("");
+    sprintf(cont,"%10s\t|\t%10s\t|\t%s \n","K", "PK", "[Xk+1, Yk+1]");
+    buffer->set_text(buffer->get_text().append("Linea - Algoritmo Bresenham\n\n"));
+    buffer->set_text(buffer->get_text().append(cont));
+    buffer->set_text(buffer->get_text().append("-----------------------------------------------------------------------------------------------------\n"));
 
 
 
@@ -88,7 +93,7 @@ int Line::signo(int num)
                     }
                     points.push_back(Point(x, y));
                     if(!draw){
-                        sprintf(cont,"%d\t%d\t\t[ %d , %d ] \n",contador, p, x,y);
+                        sprintf(cont,"%10d\t|\t%10d\t|\t[ %10d , %10d ] \n",contador, p, x,y);
                         buffer->set_text(buffer->get_text().append(cont));
                         contador++;
                     }
@@ -114,7 +119,7 @@ int Line::signo(int num)
                     }
                     points.push_back(Point(x, y));
                     if(!draw){
-                        sprintf(cont,"%d\t%d\t\t[ %d , %d ] \n",contador, p, x,y);
+                        sprintf(cont,"%10d\t|\t%10d\t|\t[ %10d , %10d ] \n",contador, p, x,y);
                         buffer->set_text(buffer->get_text().append(cont));
                         contador++;
                     }
@@ -145,7 +150,7 @@ int Line::signo(int num)
                     }
                     points.push_back(Point(x, y));
                     if(!draw){
-                        sprintf(cont,"%10d   %10d   [ %d , %d ] \n",contador, p, x,y);
+                        sprintf(cont,"%10d\t|\t%10d\t|\t[ %10d , %10d ] \n",contador, p, x,y);
                         buffer->set_text(buffer->get_text().append(cont));
                         contador++;
                     }
@@ -172,7 +177,7 @@ int Line::signo(int num)
                     }
                     points.push_back(Point(x, y));
                     if(!draw){
-                        sprintf(cont,"%d\t%d\t\t[ %d , %d ] \n",contador, p, x,y);
+                        sprintf(cont,"%10d\t|\t%10d\t|\t[ %10d , %10d ] \n",contador, p, x,y);
                         buffer->set_text(buffer->get_text().append(cont));
                         contador++;
                     }
