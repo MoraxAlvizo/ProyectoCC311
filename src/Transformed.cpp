@@ -52,12 +52,11 @@ void Transformed::rotate(Figure* figure){
 
 void Transformed::scale(Figure* figure){
 
-    GLfloat sx = std::abs( (final.getX() - inicial.getX())/10.0f );
-    GLfloat sy = std::abs( (final.getY() - inicial.getY())/10.0f );
+    GLfloat sx = std::abs( (final.getX() - inicial.getX())/50.0f );
 
     GLfloat mat[3][3] = {
         { sx , 0  , (GLfloat)(inicial.getX()*(1 - sx))},
-        { 0  , sy , (GLfloat)(inicial.getY()*(1 - sy))},
+        { 0  , sx , (GLfloat)(inicial.getY()*(1 - sx))},
         { 0  , 0  , 1},
     };
 

@@ -5715,7 +5715,7 @@
 	"../include/ToolsMenu.h"
 	<iostream>
 
-1370223357 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/drawingOpenGL.cpp
+1370482848 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/drawingOpenGL.cpp
 	"../include/drawingOpenGL.h"
 
 1370219425 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Figure.cpp
@@ -5742,16 +5742,16 @@
 	<cmath>
 	"Figure.h"
 
-1370221368 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Polygon.cpp
+1370482816 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Polygon.cpp
 	"../include/Polygon.h"
 
-1370220805 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Polygon.h
+1370482807 /home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/include/Polygon.h
 	<cmath>
 	<vector>
 	"Figure.h"
 	"Line.h"
 
-1370223625 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Transformed.cpp
+1370482187 source:/home/omar/Documentos/CodeBlocksWorkspace/ProyectoCC311/src/Transformed.cpp
 	"../include/Transformed.h"
 	<iostream>
 

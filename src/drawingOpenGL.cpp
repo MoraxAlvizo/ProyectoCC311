@@ -163,7 +163,7 @@ bool DrawingOpenGL::on_button_press_event(GdkEventButton* event) {
                 case POLYGON:
                 {
                     Polygon * polygon = (Polygon *)figure;
-                    polygon->calcule();
+                    polygon->calcule(DRAW);
                     break;
                 }
             }
@@ -280,6 +280,10 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
                         transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
                         transform->rotate(elipse);
                         break;
+                    case SCALE:
+                        transform->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y));
+                        transform->scale(elipse);
+                        break;
                     case DRAW:
                         elipse->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y ));
                         break;
@@ -310,7 +314,7 @@ bool DrawingOpenGL::on_motion_notify_event(GdkEventMotion* event) {
                         polygon->setFinalPoint(Point(event->x - (w/2),  (h/2) - event->y ));
                         break;
                 }
-                polygon->calcule();
+                polygon->calcule(DRAW);
                 polygon->draw();
                 break;
 
@@ -461,7 +465,7 @@ void DrawingOpenGL::mirrior(int numMirror){
                 case POLYGON:
                 {
                     Polygon * polygon = (Polygon *)figure;
-                    polygon->calcule();
+                    polygon->calcule(DRAW);
                     break;
                 }
             }

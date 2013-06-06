@@ -12,7 +12,7 @@ class Polygon:
     public:
         Polygon(GLint, GLint, GLshort);
         virtual ~Polygon();
-        void calcule();
+        void calcule(bool);
         void draw();
         void drawCopy();
     protected:

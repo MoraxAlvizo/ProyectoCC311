@@ -13,7 +13,7 @@ Polygon::~Polygon()
 }
 
 
-void Polygon::calcule(){
+void Polygon::calcule(bool){
 
 
     GLint  ang = 360/ faces, l;

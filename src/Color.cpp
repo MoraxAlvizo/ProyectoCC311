@@ -97,7 +97,7 @@ void Color::toRGB(){
             this->toRGB();
             break;
         case HSV:
-            Hi = ((int)H_HSV/60) % 6;
+            Hi = (int)(H_HSV/60) % 6;
             f = (H_HSV/60.0) - Hi;
             p = V_HSV * (1 - S_HSV);
             q = V_HSV * (1 - f*S_HSV);
@@ -170,19 +170,26 @@ void Color::toRGB(){
 
 void Color::toCMY(){
     float min = this->getMin();
+    float c, m, y;
 
     switch(this->type){
         case RGB:
-            C_CMYK = 1 - R_RGB;
-            M_CMYK = 1 - G_RGB;
-            Y_CMYK = 1 - B_RGB;
+            c = 1 - R_RGB;
+            m = 1 - G_RGB;
+            y = 1 - B_RGB;
+            C_CMYK = c;
+            M_CMYK = m;
+            Y_CMYK = y;
             break;
         case CMY:
             break;
         case CMYK:
-            C_CMYK += min;
-            M_CMYK += min;
-            Y_CMYK += min;
+            c = (C_CMYK* (1 - K_CMYK)+K_CMYK);
+            m = (M_CMYK* (1 - K_CMYK)+K_CMYK);
+            y = (Y_CMYK* (1 - K_CMYK)+K_CMYK);
+            C_CMYK = c;
+            M_CMYK = m;
+            Y_CMYK = y;
             break;
         case HSV:
             toRGB();
@@ -214,9 +221,10 @@ void Color::toCMYK(){
             toCMYK();
             break;
         case CMY:
-            C_CMYK -= min;
-            M_CMYK -= min;
-            Y_CMYK -= min;
+            min = this->getMin();
+            C_CMYK = 1-min == 0 ? 0 : (C_CMYK-min)/(1 - min);
+            M_CMYK = 1-min == 0 ? 0 : (M_CMYK-min)/(1 - min);
+            Y_CMYK = 1-min == 0 ? 0 : (Y_CMYK-min)/(1 - min);
             K_CMYK = min;
             break;
         case CMYK:
@@ -250,17 +258,22 @@ void Color::toHSV(){
 
     switch(this->type){
         case RGB:
+            max = this->getMay();
+            min = this->getMin();
+            diferencia = max - min;
+
             if (max == R_RGB)
-                h = 60.0 * ((int)((G_RGB - B_RGB)/diferencia) % 6);
+                h = diferencia == 0 ? 0 : (int)(60 * ((G_RGB - B_RGB)/diferencia) + 360) % 360;
             else if (max == G_RGB)
-                h = 60.0 * ((int)((B_RGB - R_RGB)/diferencia) + 2.0);
+                h = diferencia == 0 ? 0 : (int)(60 * ((B_RGB - R_RGB)/diferencia) + 120) % 360;
             else if (max == B_RGB)
-                h = 60.0 * ((int)((R_RGB - G_RGB)/diferencia) + 4.0);
+                h = diferencia == 0 ? 0 : (int)(60 * ((R_RGB - G_RGB)/diferencia) + 240) % 360;
 
             if (diferencia == 0)
                 s = 0;
             else
                 s = diferencia / max;
+
             H_HSV = h;
             S_HSV = s;
             V_HSV = max;
